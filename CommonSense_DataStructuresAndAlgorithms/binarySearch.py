@@ -5,6 +5,9 @@
 
     We will not see the real benefits of binary search until we find a scenario with a LOT of data 
     compared to linear search because of how they both scale to infinity! 
+
+    Tip: If you ever need to sift through data and you know its ordered know that you have the binary search algorithm in your toolbox 
+    to be able to find elements in logarithmic time 
 '''
 import time
 from datetime import timedelta
@@ -68,4 +71,5 @@ def main():
     print("linear search")
     for i in range(len(targets)):
         runTests(tests[i], targets[i], linearSearch)
+
 main()
