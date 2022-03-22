@@ -38,7 +38,7 @@ def runTests(nums: [int], target: int, method) -> bool:
     endTime = time.time()
 
     if result == True: 
-        print(f"***PASSED*** [{timedelta(seconds = endTime - startTime)}]")
+        print(f"***PASSED*** [{len(nums)} elements][{timedelta(seconds = endTime - startTime)} seconds]")
     else:
         print("***FAILED***")
         print("result: ", result)
