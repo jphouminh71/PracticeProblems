@@ -8,6 +8,7 @@
 import time
 from datetime import timedelta
 
+# this approach bubbles the single element as far up as possible
 def bubbleSort(nums:[int]) -> [int]:
     lastSortedIndex = len(nums)-1 # we do -1 here because we are looking one index ahead in the search 
     IsSorted = False 
@@ -19,6 +20,16 @@ def bubbleSort(nums:[int]) -> [int]:
                 IsSorted = False
         lastSortedIndex -= 1
     return nums
+
+
+# this approach attempts to bubble up as many as possible in one iteration 
+# thus we spend less time doing the swap operation 
+def bubbleSortTwo(nums: [int]) -> [int]:
+    for i in range(0, len(nums)): 
+        for j in range(i+1, len(nums)):
+            if nums[i] > nums[j]: 
+                swap(nums, i, j)
+    return nums 
 
 def swap(arr, indexOne, indexTwo): 
     temp = arr[indexOne]
@@ -35,9 +46,9 @@ def isSorted(nums:[int]) -> bool:
     return isSorted  
     
 
-def runTests(nums: [int]): 
+def runTests(nums: [int], method): 
     startTime = time.time() 
-    result = bubbleSort(nums)
+    result = method(nums)
     passed = isSorted(result)
     endTime = time.time()
 
@@ -47,9 +58,13 @@ def runTests(nums: [int]):
         print(f"***FAILED*** {result}")
 
 def startTests(tests): 
+    print("bubbleSort")
     for test in tests: 
-        runTests(test)
-
+        runTests(test, bubbleSort)
+    print()
+    print("bubbleSortTwo")
+    for test in tests: 
+        runTests(test, bubbleSortTwo)
 def testMethods(): 
     swapTest = [1,2,3]
     swap(swapTest, 0, 2)
