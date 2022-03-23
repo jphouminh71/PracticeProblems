@@ -25,7 +25,7 @@ def swap(arr, indexOne, indexTwo):
 
 def isSorted(nums:[int]) -> bool: 
     isSorted = True 
-    for i in range(len(nums)-2): 
+    for i in range(len(nums)-1): 
         if nums[i] > nums[i+1]:
             isSorted = False 
             break 
